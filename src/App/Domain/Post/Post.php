@@ -11,7 +11,6 @@ class Post extends AggregateRoot
         private readonly PostId $id,
         private readonly string $name,
         private readonly string $content
-    )
-    {
+    ) {
     }
 }

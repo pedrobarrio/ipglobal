@@ -7,7 +7,9 @@ use App\Shared\Aggregate\AggregateRoot;
 
 class Author extends AggregateRoot
 {
-    public function __construct(private readonly AuthorId $id, private readonly string $name)
-    {
+    public function __construct(
+        private readonly AuthorId $id,
+        private readonly string $name
+    ) {
     }
 }
