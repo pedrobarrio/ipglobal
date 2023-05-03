@@ -22,7 +22,7 @@ class BlogController extends AbstractController
     public function getPost(): JsonResponse
     {
         return $this->json([
-            'message' => 'Welcome to your new BLOG controller!',
+            'message' => 'Welcome to your new BLOG POST controller!',
             'path' => 'src/Controller/BlogController.php',
         ]);
     }

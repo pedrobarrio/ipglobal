@@ -8,20 +8,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
-    #[Route('/api', name: 'app_api', methods: ['GET'])]
+    #[Route('/api', name: 'app_api_get', methods: ['GET'])]
     public function getPost(): JsonResponse
     {
         return $this->json([
-            'message' => 'Welcome to your new API controller!',
+            'message' => 'Welcome to your new API controller',
             'path' => 'src/Controller/ApiController.php',
         ]);
     }
 
-    #[Route('/api', name: 'app_api', methods: ['POST'])]
+    #[Route('/api', name: 'app_api_post', methods: ['POST'])]
     public function publicPost(): JsonResponse
     {
         return $this->json([
-            'message' => 'Welcome to your new API controller!',
+            'message' => 'Welcome to your new API POST controller',
             'path' => 'src/Controller/ApiController.php',
         ]);
     }
