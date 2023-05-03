@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\App\Domain\Entity\Post;
 
+use App\App\Domain\ValueObject\AuthorId;
 use App\App\Domain\ValueObject\PostId;
 use App\App\Domain\ValueObject\PostState;
 use App\Shared\Aggregate\AggregateRoot;
@@ -13,6 +14,7 @@ class Post extends AggregateRoot
         private readonly PostId $id,
         private readonly string $name,
         private readonly string $content,
+        private readonly AuthorId $author,
         private PostState $state = PostState::UNPUBLISHED
     ) {
     }
@@ -40,5 +42,10 @@ class Post extends AggregateRoot
     public function publish()
     {
         $this->state = PostState::PUBLISHED;
+    }
+
+    public function author(): AuthorId
+    {
+        return $this->author;
     }
 }
