@@ -17,14 +17,14 @@ class GetPostByIdUseCase
     ) {
     }
 
-    public function execute()
+    public function execute(string $id): GetPostByIdResponse
     {
-        $id = '123123123';
-        $post = $this->postRepository->byId(new PostId());
+        $post = $this->postRepository->byId(PostId::fromString($id));
         if (!$post) {
             throw new NotFoundHttpException();
         }
         $this->authorRepository->byId($post->author());
+        return new GetPostByIdResponse();
 
     }
 

@@ -12,8 +12,8 @@ class Post extends AggregateRoot
 {
     public function __construct(
         private readonly PostId $id,
-        private readonly string $name,
-        private readonly string $content,
+        private readonly string $title,
+        private readonly string $body,
         private readonly AuthorId $author,
         private PostState $state = PostState::UNPUBLISHED
     ) {
@@ -24,14 +24,14 @@ class Post extends AggregateRoot
         return $this->id;
     }
 
-    public function name(): string
+    public function title(): string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function content(): string
+    public function body(): string
     {
-        return $this->content;
+        return $this->body;
     }
 
     public function state(): PostState
@@ -39,7 +39,7 @@ class Post extends AggregateRoot
         return $this->state;
     }
 
-    public function publish()
+    public function publish(): void
     {
         $this->state = PostState::PUBLISHED;
     }
@@ -47,5 +47,18 @@ class Post extends AggregateRoot
     public function author(): AuthorId
     {
         return $this->author;
+    }
+
+    public function toJson(): bool|string
+    {
+        return json_encode(
+            [
+            'id' => $this->id->value(),
+            'title' => $this->title,
+            'body' => $this->body,
+            'userId' => $this->author->value(),
+            'state' => $this->state
+            ]
+        );
     }
 }

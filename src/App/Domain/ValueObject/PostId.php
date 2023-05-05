@@ -2,45 +2,35 @@
 declare(strict_types=1);
 namespace App\App\Domain\ValueObject;
 
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
-
 class PostId
 {
-    protected UuidInterface $value;
 
-    public function __construct(UuidInterface $value)
+    public function __construct(private readonly int $value)
     {
-        $this->value = $value;
     }
 
-    public static function generate(): self
-    {
-        return new self(Uuid::uuid4());
-    }
-
-    public static function create(UuidInterface $value): self
+    public static function create(int $value): self
     {
         return new self($value);
     }
 
     public static function fromString(string $value): self
     {
-        return new self(Uuid::fromString($value));
+        return new self((int)$value);
     }
 
-    public function getValue(): UuidInterface
+    public function value(): int
     {
         return $this->value;
     }
 
     public function equals(PostId $postId): bool
     {
-        return $this->value->equals($postId->getValue());
+        return $this->value === $postId->value();
     }
 
     public function __toString()
     {
-        return $this->value->toString();
+        return (string)$this->value;
     }
 }
