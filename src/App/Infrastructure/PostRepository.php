@@ -13,7 +13,6 @@ class PostRepository implements PostRepositoryInterface
 
     public function __construct(private string $url, private readonly HttpClientInterface $client)
     {
-        $this->url = 'https://jsonplaceholder.typicode.com/';
     }
 
     public function byId(PostId $id): ?Post
