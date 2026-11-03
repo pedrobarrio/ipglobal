@@ -28,3 +28,6 @@ services:
     App\App\Infrastructure\PostRepository:
         arguments:
             $url: 'https://jsonplaceholder.typicode.com/'
+
+    App\App\Domain\Entity\Author\AuthorRepositoryInterface: '@App\App\Infrastructure\AuthorRepository'
+    App\App\Domain\Entity\Post\PostRepositoryInterface: '@App\App\Infrastructure\PostRepository'
