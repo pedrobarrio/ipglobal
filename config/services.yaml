@@ -17,8 +17,17 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/App/Domain/'
+            - '../src/App/Application/**/*Request.php'
+            - '../src/App/Application/**/*Response.php'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\App\Infrastructure\PostRepository:
+        arguments:
+            $url: 'https://jsonplaceholder.typicode.com/'
+
+    App\App\Domain\Entity\Author\AuthorRepositoryInterface: '@App\App\Infrastructure\AuthorRepository'
+    App\App\Domain\Entity\Post\PostRepositoryInterface: '@App\App\Infrastructure\PostRepository'

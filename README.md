@@ -21,3 +21,7 @@ Todas las clases y métodos tienen tipado estricto.
 
 
 
+
+## Herramientas de desarrollo
+
+Instala las dependencias de la aplicación con `composer install`. PHP CS Fixer tiene su propio lock. Instálalo con `composer install --working-dir=tools/php-cs-fixer` y ejecútalo desde `tools/php-cs-fixer/vendor/bin/php-cs-fixer`.
